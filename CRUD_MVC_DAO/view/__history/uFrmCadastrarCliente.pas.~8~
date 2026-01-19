@@ -1,0 +1,83 @@
+unit uFrmCadastrarCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
+  Vcl.Grids, Vcl.DBGrids, Vcl.Mask, Vcl.ComCtrls;
+
+type
+  TOperacao = (opNovo, opAlterar, opNavegar);
+  TFrmCadastrarCliente = class(TForm)
+    pnlRodape: TPanel;
+    btnFechar: TButton;
+    pgcPrincipal: TPageControl;
+    tbPesq: TTabSheet;
+    tbDados: TTabSheet;
+    pnlFiltro: TPanel;
+    edtPesquisar: TLabeledEdit;
+    btnPesquisar: TButton;
+    pnlBtnsPesq: TPanel;
+    btnNovo: TButton;
+    btnExcluir: TButton;
+    btnDetalhar: TButton;
+    DBGrid1: TDBGrid;
+    dsPesq: TDataSource;
+    edtCodigo: TLabeledEdit;
+    edtNome: TLabeledEdit;
+    edtDocumento: TLabeledEdit;
+    cbxTipo: TComboBox;
+    edtTelefone: TLabeledEdit;
+    lblTipo: TLabel;
+    pnlBtnsCad: TPanel;
+    btnListar: TButton;
+    btnAlterar: TButton;
+    btnGravar: TButton;
+    btnCancelar: TButton;
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure btnFecharClick(Sender: TObject);
+  private
+    { Private declarations }
+
+    FOperacao: TOperacao;
+  public
+    { Public declarations }
+    procedure Novo;
+    procedure Detalhar;
+  end;
+
+var
+  FrmCadastrarCliente: TFrmCadastrarCliente;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmCadastrarCliente.btnFecharClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFrmCadastrarCliente.Detalhar;
+begin
+  FOperacao := opNavegar;
+  pgcPrincipal.ActivePage := tbDados;
+end;
+
+procedure TFrmCadastrarCliente.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
+  end;
+end;
+
+procedure TFrmCadastrarCliente.Novo;
+begin
+  FOperacao := opNovo;
+  pgcPrincipal.ActivePage := tbDados;
+end;
+
+end.

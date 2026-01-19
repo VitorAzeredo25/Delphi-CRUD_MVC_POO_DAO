@@ -1,0 +1,5 @@
+object DmCliente: TDmCliente
+  Height = 575
+  Width = 804
+  PixelsPerInch = 120
+end
