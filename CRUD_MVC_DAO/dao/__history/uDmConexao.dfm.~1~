@@ -1,9 +1,0 @@
-object DmConexao: TDmConexao
-  Height = 457
-  Width = 606
-  PixelsPerInch = 120
-  object sqlConexao: TSQLConnection
-    Left = 104
-    Top = 136
-  end
-end
