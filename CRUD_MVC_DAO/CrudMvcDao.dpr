@@ -15,8 +15,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmCadastrarCliente, FrmCadastrarCliente);
   Application.CreateForm(TDmConexao, DmConexao);
-  Application.CreateForm(TDmCliente, DmCliente);
   Application.Run;
 end.
